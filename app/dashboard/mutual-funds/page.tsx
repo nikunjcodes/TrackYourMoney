@@ -10,6 +10,7 @@ import { Input } from "@/components/ui/input"
 import { formatCurrency, formatDate, calculateHoldingPeriod } from "@/lib/utils"
 import AddMutualFundDialog from "@/components/dashboard/add-mutual-fund-dialog"
 import EditMutualFundDialog from "@/components/dashboard/edit-mutual-fund-dialog"
+import AIAssistant from "@/components/dashboard/ai-assistant"
 
 interface MutualFund {
   _id: string
@@ -373,6 +374,15 @@ export default function MutualFundsPage() {
         onOpenChange={setShowEditDialog}
         onSubmit={handleEditMutualFund}
         mutualFund={selectedFund}
+      />
+      <AIAssistant
+        mutualFunds={filteredFunds}
+        portfolioStats={{
+          totalInvestment,
+          totalCurrentValue,
+          totalProfitLoss,
+          profitLossPercentage,
+        }}
       />
     </motion.div>
   )
